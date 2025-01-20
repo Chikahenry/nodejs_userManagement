@@ -1,9 +1,12 @@
 const mongoose = require('mongoose');
 const logger = require('./logger');
+require('dotenv').config({ path: './.env' });
 
 const connectDB = async () => {
+  const mongoURI = 'mongodb://127.0.0.1:27017/user-management';
+  //console.log('MongoDB URI:', process.env.MONGODB);
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+    const conn = await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
